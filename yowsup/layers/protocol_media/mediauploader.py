@@ -136,8 +136,7 @@ class MediaUploader(WARequest, threading.Thread):
                 if self.successCallback:
                     self.successCallback(sourcePath, self.jid, result["url"])
             else:
-                self.errorCallback(uploadUrl)
-
+                self.errorCallback(sourcePath, self.jid, uploadUrl)
         except:
             logger.exception("Error occured at transfer %s"%sys.exc_info()[1])
             if self.errorCallback:
